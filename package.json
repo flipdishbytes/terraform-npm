@@ -35,8 +35,6 @@
     "prepub": "yarn prepublishOnly",
     "prepublishOnly": "yarn prettier && pkgfiles",
     "postinstall": "node src/install-terraform",
-    "test": "./tests/runner.sh",
-    "test-global": "./tests/global-runner.sh",
     "terraform:version": "terraform -version"
   },
   "bin": {
