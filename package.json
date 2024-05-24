@@ -1,14 +1,12 @@
 {
-  "name": "terraform-npm",
-  "version": "0.2.7",
+  "name": "@flipdish_devops/terraform",
+  "version": "0.3.0",
   "description": "An NPM executable package for HashiCorp's Terraform.",
   "homepage": "https://www.npmjs.com/package/terraform-npm",
-  "repository": "https://github.com/steven-xie/terraform-npm",
-  "bugs": {
-    "url": "https://github.com/steven-xie/terraform-npm/issues",
-    "email": "dev@stevenxie.me"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/steven-xie/terraform-npm.git"
   },
-  "author": "Steven Xie <hello@stevenxie.me>",
   "license": "AAL",
   "private": false,
   "os": [
@@ -38,10 +36,11 @@
     "prepublishOnly": "yarn prettier && pkgfiles",
     "postinstall": "node src/install-terraform",
     "test": "./tests/runner.sh",
-    "test-global": "./tests/global-runner.sh"
+    "test-global": "./tests/global-runner.sh",
+    "terraform:version": "terraform -version"
   },
   "bin": {
-    "terraform": "./src/terraform-wrapper.js"
+    "terraform": "src/terraform-wrapper.js"
   },
   "dependencies": {
     "progress": "^2.0.0",
@@ -50,5 +49,10 @@
   "devDependencies": {
     "pkgfiles": "^2.3.2",
     "prettier": "^1.12.1"
+  },
+  "main": "index.js",
+  "author": "Flipdish",
+  "bugs": {
+    "url": "https://github.com/flipdishbytes/terraform-npm/issues"
   }
 }

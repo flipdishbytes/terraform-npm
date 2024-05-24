@@ -6,6 +6,7 @@ const { resolve } = require('path');
 
 const execName = process.platform === 'win32' ? 'terraform.exe' : './terraform';
 const command = resolve(__dirname, '..', 'tools', execName);
+console.log(`Executing Terraform binary at ${command}...`);
 const terraform = spawn(command, process.argv.slice(2), { cwd: process.cwd() });
 
 terraform.stdout.pipe(process.stdout);

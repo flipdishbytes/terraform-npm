@@ -1,6 +1,5 @@
 const { createWriteStream } = require('fs');
-const yauzl = require('yauzl');
-
+const { open } = require('yauzl');
 /**
  * Unzips a specified file.
  * @param {string} zipDir The directory of the target zip file.
@@ -9,30 +8,31 @@ const yauzl = require('yauzl');
 async function unzip(zipDir, destDir) {
   return new Promise(resolve => {
     console.log(`Unzipping archive at ${zipDir}...`);
-    const destStream = createWriteStream(destDir);
-    yauzl.open(zipDir, callback);
-
-    function callback(err, zip) {
+    open(zipDir, { lazyEntries: true }, function(err, zipfile) {
       if (err) {
-        console.error(`An error occurred while unzipping: ${err}`);
+        console.error(`Could not open zip file: ${err}`);
         process.exit(40);
       }
-      zip.on('entry', onEntry);
-      // prettier-ignore
-      function onEntry(entry) { zip.openReadStream(entry, onStreamOpen); }
-      function onStreamOpen(err, stream) {
-        if (err) {
-          console.error(`Failed to open read stream from zip file: ${err}`);
-          process.exit(41);
+
+      zipfile.readEntry();
+      zipfile.on('entry', function(entry) {
+        if (/\/$/.test(entry.fileName)) {
+          zipfile.readEntry();
+        } else {
+          zipfile.openReadStream(entry, function(err, readStream) {
+            if (err) {
+              console.error(`Could not open read stream: ${err}`);
+              process.exit(41);
+            }
+            readStream.on('end', function() {
+              zipfile.readEntry();
+            });
+            readStream.pipe(createWriteStream(destDir));
+          });
         }
-        stream.pipe(destStream);
-      }
-      zip.on('end', function() {
-        console.log('Finished unzipping.');
-        resolve();
       });
-    }
+      zipfile.on('end', resolve);
+    });
   });
 }
-
 module.exports = unzip;

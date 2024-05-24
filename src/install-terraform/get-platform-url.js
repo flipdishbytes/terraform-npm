@@ -1,15 +1,17 @@
 const assert = require('assert').strict;
 
 // Terraform download source contants
-const TF_ROOT_URI = 'https://releases.hashicorp.com/terraform/0.11.7/terraform_0.11.7_';
+const TF_ROOT_URI = 'https://releases.hashicorp.com/terraform/1.8.4/terraform_1.8.4_';
 const TF_ZIP_URIS = {
   DARWIN: 'darwin_amd64.zip',
+  DARWIN_ARM64: 'darwin_arm64.zip',
   FREEBSD_32: 'freebsd_386.zip',
   FREEBSD_64: 'freebsd_amd64.zip',
   FREEBSD_ARM: 'freebsd_arm.zip',
   LINUX_32: 'linux_386.zip',
   LINUX_64: 'linux_amd64.zip',
   LINUX_ARM: 'linux_arm.zip',
+  LINUX_ARM64: 'linux_arm_64.zip',
   OPENBSD_32: 'openbsd_386.zip',
   OPENBSD_64: 'openbsd_amd64.zip',
   SOLARIS: 'solaris_amd64.zip',
@@ -47,7 +49,8 @@ function matchArchToKeyPostfix(arch, isARMcompat = true) {
 
   if (archMatch('x32', 'ia32')) return '_32';
   if (arch === 'x64') return '_64';
-  if (archMatch('arm', 'arm64') && isARMcompat) return '_ARM';
+  if (arch === 'arm' && isARMcompat) return '_ARM';
+  if (arch === 'arm64' && isARMcompat) return '_ARM64';
   throw new Error('arch-not-supported');
 }
 
@@ -73,9 +76,7 @@ function matchPlatformToKey(platform, arch) {
   // prettier-ignore
   switch (platform) {
 		case 'linux': return 'LINUX' + matchArch();
-		case 'darwin':
-			if (arch !== 'x64') errorOut();
-			else return 'DARWIN';
+		case 'darwin': return 'DARWIN' + matchArch();
 		case 'freebsd': return 'FREEBSD' + matchArch();
 		case 'openbsd': return 'OPENBSD' + matchArch(false);
 		case 'sunos':
