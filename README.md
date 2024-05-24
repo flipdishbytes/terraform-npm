@@ -1,5 +1,5 @@
 # terraform-npm (forked from https://github.com/steven-xie/terraform-npm)
-*An NPM executable package for HashiCorp's Terraform.* and TFLint
+*An NPM executable package for HashiCorp's Terraform and TFLint*
 
 ### Preamble
 I assembled [Terraform](https://terraform.io) into an NPM package in order for me to include it in other projects that depended on the executable. I wanted to be able to publish NPM modules with scripts like this:
