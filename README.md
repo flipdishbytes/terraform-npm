@@ -1,12 +1,13 @@
 # terraform-npm (forked from https://github.com/steven-xie/terraform-npm)
-*An NPM executable package for HashiCorp's Terraform.*
+*An NPM executable package for HashiCorp's Terraform.* and TFLint
 
 ### Preamble
 I assembled [Terraform](https://terraform.io) into an NPM package in order for me to include it in other projects that depended on the executable. I wanted to be able to publish NPM modules with scripts like this:
 ```json
 {
   "scripts": {
-    "plan": "terraform plan -out=my-tfplan"
+    "plan": "terraform plan -out=my-tfplan",
+    "lint": "tflint --init && tflint --format compact"
   }
 }
 ```
@@ -15,7 +16,7 @@ But without having to worry about asking users to download Terraform externally.
 ---
 
 ### Installation
-To use *Terraform* as an NPM package, include it in your `package.json` dependencies:
+To use *Terraform* and *TFLint* as an NPM package, include it in your `package.json` dependencies:
 ```bash
 # If you're using Yarn (recommended):
 yarn add @flipdish_devops/terraform
@@ -43,7 +44,8 @@ This package cannot currently be used as a typical Node module, as it does not e
         "plan": "terraform plan -out=my-tfplan",
         "apply": "terraform apply",
         "execute": "terraform apply \"my-tfplan\"",
-        "destroy": "terraform destroy"
+        "destroy": "terraform destroy",
+        "lint": "tflint --init && tflint --format compact"
     }
 }
 ```

@@ -34,13 +34,14 @@
     "pub": "yarn publish --no-git-tag-version --strict-semver",
     "prepub": "yarn prepublishOnly",
     "prepublishOnly": "yarn prettier && pkgfiles",
-    "postinstall": "node src/install-terraform",
-    "terraform:version": "terraform -version"
+    "postinstall": "node src/install-terraform && node src/install-tflint"
   },
   "bin": {
-    "terraform": "src/terraform-wrapper.js"
+    "terraform": "src/terraform-wrapper.js",
+    "tflint": "src/tflint-wrapper.js"
   },
   "dependencies": {
+    "follow-redirects": "^1.15.6",
     "progress": "^2.0.0",
     "yauzl": "^2.9.1"
   },
