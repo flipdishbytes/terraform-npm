@@ -7,7 +7,6 @@ const safeMkdir = require('./safe-mkdir');
 const download = require('./download');
 const getPlatformUrl = require('./get-platform-url');
 
-
 /// File constants
 const TOOLS_DIR = resolve(__dirname, '..', '..', 'tools');
 const ZIP_DIR = join(TOOLS_DIR, 'tflint.zip');

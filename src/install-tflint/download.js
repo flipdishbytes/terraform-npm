@@ -10,44 +10,46 @@ const { https } = require('follow-redirects');
 async function download(url, destDir) {
   return new Promise((resolve, reject) => {
     const fstream = createWriteStream(destDir);
-    
-    fstream.on('error', (err) => {
+
+    fstream.on('error', err => {
       console.error(`Could not open write stream for download: ${err}`);
       reject(err);
     });
 
     console.log(`Downloading file from ${url}...`);
 
-    https.get(url, (res) => {
-      if (res.statusCode !== 200) {
-        const error = new Error(`Failed to get '${url}' (${res.statusCode})`);
-        console.error(error.message);
-        reject(error);
-        return;
-      }
+    https
+      .get(url, res => {
+        if (res.statusCode !== 200) {
+          const error = new Error(`Failed to get '${url}' (${res.statusCode})`);
+          console.error(error.message);
+          reject(error);
+          return;
+        }
 
-      const totalChunks = parseInt(res.headers['content-length'], 10);
-      const prgbar = new Progress('[:bar] :percent ', { total: totalChunks });
+        const totalChunks = parseInt(res.headers['content-length'], 10);
+        const prgbar = new Progress('[:bar] :percent ', { total: totalChunks });
 
-      res.on('data', (chunk) => {
-        fstream.write(chunk);
-        prgbar.tick(chunk.length);
-      });
+        res.on('data', chunk => {
+          fstream.write(chunk);
+          prgbar.tick(chunk.length);
+        });
 
-      res.on('end', () => {
-        fstream.end();
-        console.log('Download finished.');
-        resolve();
-      });
+        res.on('end', () => {
+          fstream.end();
+          console.log('Download finished.');
+          resolve();
+        });
 
-      res.on('error', (err) => {
-        console.error(`Failed to download file: ${err}`);
+        res.on('error', err => {
+          console.error(`Failed to download file: ${err}`);
+          reject(err);
+        });
+      })
+      .on('error', err => {
+        console.error(`Failed to initiate download: ${err}`);
         reject(err);
       });
-    }).on('error', (err) => {
-      console.error(`Failed to initiate download: ${err}`);
-      reject(err);
-    });
   });
 }
 

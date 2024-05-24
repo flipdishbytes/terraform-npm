@@ -1,6 +1,6 @@
 {
   "name": "@flipdish_devops/terraform",
-  "version": "0.3.1",
+  "version": "0.3.3",
   "description": "An NPM executable package for HashiCorp's Terraform.",
   "homepage": "https://www.npmjs.com/package/terraform-npm",
   "repository": {
