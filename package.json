@@ -5,7 +5,7 @@
   "homepage": "https://www.npmjs.com/package/terraform-npm",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/steven-xie/terraform-npm.git"
+    "url": "git+https://github.com/flipdishbytes/terraform-npm.git"
   },
   "license": "AAL",
   "private": false,

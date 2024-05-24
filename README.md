@@ -18,19 +18,19 @@ But without having to worry about asking users to download Terraform externally.
 To use *Terraform* as an NPM package, include it in your `package.json` dependencies:
 ```bash
 # If you're using Yarn (recommended):
-yarn add terraform-npm
+yarn add @flipdish_devops/terraform
 
 # If you're using NPM:
-npm i terraform-npm
+npm i @flipdish_devops/terraform
 ```
 
 Or, if you want a one-time installation that you can run arbitrarily, install it globally:
 ```bash
 # If you're using Yarn (recommended):
-yarn global add terraform-npm
+yarn global add @flipdish_devops/terraform
 
 # If you're using NPM:
-npm i -g terraform-npm
+npm i -g @flipdish_devops/terraform
 ```
 
 
