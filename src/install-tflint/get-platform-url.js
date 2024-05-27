@@ -1,8 +1,7 @@
 const assert = require('assert').strict;
 
 // Terraform download source contants
-const TF_ROOT_URI =
-  'https://cdn.flipdishdev.com/terraform/tflint/tflint_';
+const TF_ROOT_URI = 'https://cdn.flipdishdev.com/terraform/tflint/tflint_';
 //https://github.com/terraform-linters/tflint/releases/download/v0.51.1/tflint_linux_amd64.zip
 
 const TF_ZIP_URIS = {

@@ -15,3 +15,7 @@ terraform.on('error', function(err) {
   console.error(`Received an error while executing the Terraform binary: ${err}`);
   process.exit(1);
 });
+terraform.on('exit', function (code) {
+  console.log(`Terraform exited with code ${code}`);
+  process.exit(code);
+});
