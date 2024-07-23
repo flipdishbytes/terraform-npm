@@ -6,6 +6,7 @@ const TF_ROOT_URI = 'https://cdn.flipdishdev.com/terraform/tflint/tflint_';
 
 const TF_ZIP_URIS = {
   DARWIN: 'darwin_amd64.zip',
+  DARWIN_64: 'darwin_amd64.zip',
   DARWIN_ARM64: 'darwin_arm64.zip',
   FREEBSD_32: 'freebsd_386.zip',
   FREEBSD_64: 'freebsd_amd64.zip',
