@@ -1,4 +1,4 @@
-# terraform-npm (forked from https://github.com/steven-xie/terraform-npm)
+# Shopfully forked repo - from terraform-npm (forked from https://github.com/flipdishbytes/terraform-npm)
 *An NPM executable package for HashiCorp's Terraform and TFLint*
 
 ### Preamble

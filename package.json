@@ -1,11 +1,10 @@
 {
-  "name": "@flipdish_devops/terraform",
-  "version": "0.3.7",
+  "name": "@DoveConviene/terraform_npm",
+  "version": "1.0.0",
   "description": "An NPM executable package for HashiCorp's Terraform.",
-  "homepage": "https://www.npmjs.com/package/terraform-npm",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/flipdishbytes/terraform-npm.git"
+    "url": "git+https://github.com/DoveConviene/terraform-npm.git"
   },
   "license": "AAL",
   "private": false,
@@ -30,10 +29,7 @@
   ],
   "scripts": {
     "start": "cd src && node terraform-wrapper",
-    "prettier": "prettier --write src/**/*.js scripts/**/*.js tests/**/*.js",
-    "pub": "yarn publish --no-git-tag-version --strict-semver",
-    "prepub": "yarn prepublishOnly",
-    "prepublishOnly": "yarn prettier && pkgfiles",
+    "pub": "npm publish --no-git-tag-version --strict-semver",
     "postinstall": "node src/install-terraform && node src/install-tflint"
   },
   "bin": {
@@ -48,9 +44,5 @@
     "pkgfiles": "^2.3.2",
     "prettier": "^1.12.1"
   },
-  "main": "index.js",
-  "author": "Flipdish",
-  "bugs": {
-    "url": "https://github.com/flipdishbytes/terraform-npm/issues"
-  }
+  "main": "index.js"
 }
