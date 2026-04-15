@@ -1,7 +1,7 @@
 const assert = require('assert').strict;
 
 // Terraform download source contants
-const TF_ROOT_URI = 'https://releases.hashicorp.com/terraform/1.9.2/terraform_1.9.2_';
+const TF_ROOT_URI = 'https://releases.hashicorp.com/terraform/1.14.8/terraform_1.14.8_';
 const TF_ZIP_URIS = {
   DARWIN: 'darwin_amd64.zip',
   DARWIN_64: 'darwin_amd64.zip',

@@ -2,7 +2,9 @@ const assert = require('assert').strict;
 
 // Terraform download source contants
 const TF_ROOT_URI = 'https://cdn.flipdishdev.com/terraform/tflint/tflint_';
-//https://github.com/terraform-linters/tflint/releases/download/v0.51.1/tflint_linux_amd64.zip
+// Download latest release fromhttps://github.com/terraform-linters/tflint/releases/download/v0.51.1/tflint_linux_amd64.zip
+// Open storage explorer in the browser and navigate to the file https://portal.azure.com/#@infoflipdish.onmicrosoft.com/resource/subscriptions/c035b40a-e7be-46f1-bc25-f2e1dfb800fd/resourceGroups/az-eun-development-rg-shared-01/providers/Microsoft.Storage/storageAccounts/fdstorageshark/storagebrowser
+// Override files at terraform blob container - tflint folder
 
 const TF_ZIP_URIS = {
   DARWIN: 'darwin_amd64.zip',

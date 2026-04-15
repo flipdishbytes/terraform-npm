@@ -1,14 +1,48 @@
 {
-  "name": "@flipdish_devops/terraform",
-  "version": "0.3.7",
+  "name": "@flipdish/terraform",
+  "version": "0.3.8",
+  "private": false,
   "description": "An NPM executable package for HashiCorp's Terraform.",
+  "keywords": [
+    "terraform",
+    "hashicorp",
+    "infrastructure",
+    "automation",
+    "infrastructure-as-code",
+    "executable"
+  ],
   "homepage": "https://www.npmjs.com/package/terraform-npm",
+  "bugs": {
+    "url": "https://github.com/flipdishbytes/terraform-npm/issues"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/flipdishbytes/terraform-npm.git"
   },
   "license": "AAL",
-  "private": false,
+  "author": "Flipdish",
+  "type": "commonjs",
+  "main": "index.js",
+  "bin": {
+    "terraform": "src/terraform-wrapper.js",
+    "tflint": "src/tflint-wrapper.js"
+  },
+  "scripts": {
+    "start": "cd src && node terraform-wrapper",
+    "prettier": "prettier --write src/**/*.js scripts/**/*.js tests/**/*.js",
+    "pub": "yarn publish --no-git-tag-version --strict-semver",
+    "prepub": "yarn prepublishOnly",
+    "prepublishOnly": "yarn prettier && pkgfiles",
+    "postinstall": "node src/install-terraform && node src/install-tflint"
+  },
+  "dependencies": {
+    "progress": "^2.0.0",
+    "yauzl": "^2.9.1"
+  },
+  "devDependencies": {
+    "pkgfiles": "^2.3.2",
+    "prettier": "^1.12.1"
+  },
   "os": [
     "!aix"
   ],
@@ -19,38 +53,5 @@
     "!ppc64",
     "!s390",
     "!s390x"
-  ],
-  "keywords": [
-    "terraform",
-    "hashicorp",
-    "infrastructure",
-    "automation",
-    "infrastructure-as-code",
-    "executable"
-  ],
-  "scripts": {
-    "start": "cd src && node terraform-wrapper",
-    "prettier": "prettier --write src/**/*.js scripts/**/*.js tests/**/*.js",
-    "pub": "yarn publish --no-git-tag-version --strict-semver",
-    "prepub": "yarn prepublishOnly",
-    "prepublishOnly": "yarn prettier && pkgfiles",
-    "postinstall": "node src/install-terraform && node src/install-tflint"
-  },
-  "bin": {
-    "terraform": "src/terraform-wrapper.js",
-    "tflint": "src/tflint-wrapper.js"
-  },
-  "dependencies": {
-    "progress": "^2.0.0",
-    "yauzl": "^2.9.1"
-  },
-  "devDependencies": {
-    "pkgfiles": "^2.3.2",
-    "prettier": "^1.12.1"
-  },
-  "main": "index.js",
-  "author": "Flipdish",
-  "bugs": {
-    "url": "https://github.com/flipdishbytes/terraform-npm/issues"
-  }
+  ]
 }
